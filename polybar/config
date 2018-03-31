@@ -1,0 +1,234 @@
+[colors]
+background = ${xrdb:color0:#222}
+background-alt 	= ${xrdb:color7:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
+
+[bar/top]
+monitor = DP-2.8
+width = 100%
+height = 25
+fixed-center = true
+underline-size = 2
+topbar.border-top-size = 4
+background = ${colors.background}
+foreground = ${colors.foreground}
+padding-left = 2
+padding-right = 2
+module-margin-left = 0
+module-margin-right = 2
+
+font-0 = "Noto Sans:pixelsize=10"
+font-1 = unifont:fontformat=truetype:size=9:antialias=false;0
+font-2 = "Wuncon Siji:pixelsize=10;0"
+font-3 = Roboto:style=Regular:pixelsize=10;0
+font-4 = "Font Awesome 5 Free::style=Regular:pixelsize=10;0"
+font-5 = "Font Awesome 5 Free::style=Solid:pixelsize=10;0"
+font-6 = "Font Awesome 5 Brands:pixelsize=10;0"
+
+modules-left = i3 xwindow
+modules-center = mpd
+modules-right = volume cpu memory eth date powermenu
+
+;tray-position = right
+tray-padding = 2
+;tray-transparent = true
+tray-background = ${colors.background}
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+
+label-mode-padding = 1
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
+
+label-focused = %name%
+label-focused-background = ${colors.primary}
+label-focused-foreground = ${colors.foreground}
+label-focused-underline = ${colors.secondary}
+label-focused-padding = 2
+
+label-unfocused = %name%
+label-unfocused-padding = 2
+label-unfocused-foreground = ${colors.foreground-alt}
+
+label-visible = %name%
+label-visible-background = ${colors.background}
+label-visible-underline = ${colors.background}
+label-visible-padding = 2
+
+label-urgent = %name%
+label-urgent-background = ${colors.secondary}
+label-urgent-foreground = ${colors.foreground}
+label-urgent-padding = 2
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:40:...%
+
+[module/mpd]
+type = internal/mpd
+;format-online = <icon-prev> <icon-stop> <toggle> <icon-next> <bar-progress>  <label-time>  <label-song>
+format-online = <label-song>
+
+icon-prev = 
+icon-seekb = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-seekf = 
+icon-next = 
+
+label-song-maxlen = 40
+label-song-ellipsis = true
+
+bar-progress-width = 15
+bar-progress-indicator = |
+bar-progress-indicator-foreground = #ff
+bar-progress-indicator-font = 2
+bar-progress-fill = ─
+bar-progress-fill-font = 2
+bar-progress-fill-foreground = #ff
+bar-progress-empty = ─
+bar-progress-empty-font = 2
+bar-progress-empty-foreground = ${colors.foreground-alt}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+;format-underline = #fff
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.secondary}
+label = %gb_used%/%gb_free%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = " "
+label-volume-foreground = ${colors.secondary}
+
+format-muted-prefix = " "
+format-muted-foreground = #ad2828
+label-muted = Muted
+
+bar-volume-width = 8
+;bar-volume-foreground-0 = #ad2828
+;bar-volume-foreground-1 = #ad2828
+;bar-volume-foreground-2 = #ad2828
+;bar-volume-foreground-3 = #ad2828
+;bar-volume-foreground-4 = #ad2828
+;bar-volume-foreground-5 = #ad2828
+;bar-volume-foreground-6 = #ad2828
+bar-volume-gradient = false
+bar-volume-indicator = 
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 2
+warn-temperature = 60
+
+format = <ramp> <label>
+;format-underline = #fff
+format-warn = <ramp> <label-warn>
+;format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = #ad2828
+
+[module/eth]
+type = internal/network
+interface = enp6s0
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.secondary}
+label-connected = %downspeed:9% %local_ip%
+
+
+[module/date]
+type = internal/date
+interval = 1
+
+format-prefix = 
+format-prefix-foreground = ${colors.secondary}
+
+date =
+date-alt = " %d %m %Y"
+
+time = %H:%M
+time-alt = %H:%M
+
+label = %date% %time%
+
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.secondary}
+
+menu-0-0 =  reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 =  power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini
