@@ -158,5 +158,8 @@ hide_edge_borders smart
 # Wallpaper settings
 exec --no-startup-id nitrogen --restore
 
+# pywal
+exec --no-startup-id wal -R -n  
+
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
