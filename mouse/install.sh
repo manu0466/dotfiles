@@ -16,6 +16,7 @@ install_dependencies ${DEPENDENCIES[@]} ${AUR_DEPENDENCIES[@]}
 
 echo "Configuring mouse..."
 sudo systemctl enable atd
-echo "ACTION==\"add\", ATTRS{idVendor}==\"046d\", ATTRS{idProduct}==\"c52b\", RUN+=\"$HOME/.config/scripts/mouse-udev-receiver.sh\"" | sudo tee /etc/udev/rules.d/81-mx-master.rules 
+sudo systemctl start atd
+echo "ACTION==\"add\", ATTRS{idVendor}==\"046d\", ATTRS{idProduct}==\"c52b\", RUN+=\"$HOME/.config/scripts/mouse-udev-receiver.sh\"" | sudo tee /etc/udev/rules.d/81-mx-master.rules
 sudo udevadm control --reload
 $HOME/.config/scripts/mouse.sh
