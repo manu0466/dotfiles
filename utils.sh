@@ -11,7 +11,7 @@ function safe_mkdir {
         cp -r $1 "/tmp/backup_dir"
         mv "/tmp/backup_dir" $BACKUP_DIR
     else
-        mkfir -p $1
+        mkdir -p $1
     fi
 }
 
