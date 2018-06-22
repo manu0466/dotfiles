@@ -176,5 +176,14 @@ exec --no-startup-id nitrogen --restore
 # pywal
 exec --no-startup-id wal -R -n  
 
+# network manager applet
+exec --no-startup-id nm-applet
+
+# bluetooth applett
+exec --no-startup-id blueman-applet
+
+# volume applet
+exec --no-startup-id volctl
+
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
