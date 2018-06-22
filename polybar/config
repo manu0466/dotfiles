@@ -32,7 +32,7 @@ font-6 = "Font Awesome 5 Brands:size=8;0"
 
 modules-left = i3 xwindow
 modules-center = mpd
-modules-right = volume cpu memory eth date powermenu
+modules-right = volume cpu memory eth date battery powermenu
 
 tray-position = right
 tray-background = ${colors.background}
@@ -189,6 +189,25 @@ time-alt = %H:%M
 
 label = %date% %time%
 
+[module/battery]
+time-format = %H:%M
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+
+bar-capacity-foreground = #FFF
+bar-capacity-width = 10
+
+bar-capacity-empty = 
+bar-capacity-fill = 
+bar-capacity-indicator = BAT
+
+format-charging = <label-charging>
+format-discharging = <label-discharging>
+format-full = <label-full>
+
+label-charging = %consumption% W %time% %percentage%%
+label-discharging = %consumption% W %time% %percentage%%
 
 [module/powermenu]
 type = custom/menu
