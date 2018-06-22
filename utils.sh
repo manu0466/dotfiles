@@ -29,8 +29,9 @@ function install_dependencies {
     TO_INSTALL=()
     for i in "${DEPENDENCIES[@]}"
     do
+	echo "Checking $i"
     	if is_installed $i == 0; then
-    		TO_INSTALL+=($i)
+		TO_INSTALL+=($i)
     	fi
     done
     if [ -n "$TO_INSTALL" ]; then

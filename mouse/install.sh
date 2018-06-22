@@ -9,7 +9,6 @@ echo "Coping files..."
 cp $DIR/mouse.sh $HOME/.config/scripts/mouse.sh
 cp $DIR/mouse-udev-receiver.sh $HOME/.config/scripts/mouse-udev-receiver.sh
 
-
 DEPENDENCIES=('at' 'xorg-xinput')
 AUR_DEPENDENCIES=()
 install_dependencies ${DEPENDENCIES[@]} ${AUR_DEPENDENCIES[@]}
