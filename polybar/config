@@ -34,10 +34,11 @@ modules-left = i3 xwindow
 modules-center = mpd
 modules-right = volume cpu memory eth date powermenu
 
-;tray-position = right
-tray-padding = 2
-;tray-transparent = true
+tray-position = right
+tray-transparent = true
 tray-background = ${colors.background}
+tray-scale = 1.0
+tray-padding = 0
 
 [module/i3]
 type = internal/i3
