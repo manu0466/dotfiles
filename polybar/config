@@ -22,21 +22,23 @@ module-margin-left = 0
 module-margin-right = 2
 dpi = ${env:DPI:}
 
-font-0 = "Noto Sans:size=8"
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = "Wuncon Siji:size=8;0"
-font-3 = Roboto:style=Regular:size=8;0
-font-4 = "Font Awesome 5 Free::style=Regular:size=8;0"
-font-5 = "Font Awesome 5 Free::style=Solid:size=8;0"
-font-6 = "Font Awesome 5 Brands:size=8;0"
+font-0 = "Noto Sans:size=10;3"
+font-1 = unifont:fontformat=truetype:size=10:antialias=false;3
+font-2 = Roboto:style=Regular:size=10;3
+font-3 = "FontAwesome:style=Regular:size=12;5"
+font-4 = "Material Icons:style=Regular:size=12;7"
+
 
 modules-left = i3 xwindow
 modules-center = mpd
-modules-right = volume cpu memory eth date battery powermenu
+modules-right = volume cpu memory eth wifi battery date powermenu
 
 tray-position = right
 tray-background = ${colors.background}
-tray-padding = 2
+tray-padding = 0
+tray-maxsize = 1000
+tray-scale = 1
+tray-transparent = false
 
 [module/i3]
 type = internal/i3
@@ -73,37 +75,10 @@ label-urgent-padding = 2
 type = internal/xwindow
 label = %title:0:40:...%
 
-[module/mpd]
-type = internal/mpd
-;format-online = <icon-prev> <icon-stop> <toggle> <icon-next> <bar-progress>  <label-time>  <label-song>
-format-online = <label-song>
-
-icon-prev = 
-icon-seekb = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-seekf = 
-icon-next = 
-
-label-song-maxlen = 40
-label-song-ellipsis = true
-
-bar-progress-width = 15
-bar-progress-indicator = |
-bar-progress-indicator-foreground = #ff
-bar-progress-indicator-font = 2
-bar-progress-fill = ─
-bar-progress-fill-font = 2
-bar-progress-fill-foreground = #ff
-bar-progress-empty = ─
-bar-progress-empty-font = 2
-bar-progress-empty-foreground = ${colors.foreground-alt}
-
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = "  "
 format-prefix-foreground = ${colors.secondary}
 ;format-underline = #fff
 label = %percentage%%
@@ -111,7 +86,7 @@ label = %percentage%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.secondary}
 label = %gb_used%/%gb_free%
 
@@ -135,33 +110,13 @@ bar-volume-width = 8
 ;bar-volume-foreground-5 = #ad2828
 ;bar-volume-foreground-6 = #ad2828
 bar-volume-gradient = false
-bar-volume-indicator = 
+bar-volume-indicator = 
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
-
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 2
-warn-temperature = 60
-
-format = <ramp> <label>
-;format-underline = #fff
-format-warn = <ramp> <label-warn>
-;format-warn-underline = ${self.format-underline}
-
-label = %temperature%
-label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = #ad2828
 
 [module/eth]
 type = internal/network
@@ -173,21 +128,29 @@ format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.secondary}
 label-connected = %downspeed:9% %local_ip%
 
+[module/wifi]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.secondary}
+label-connected = %essid% %downspeed:9% %local_ip%
 
 [module/date]
 type = internal/date
 interval = 1
 
-format-prefix = 
 format-prefix-foreground = ${colors.secondary}
 
 date =
-date-alt = " %d %m %Y"
+date-alt = "  %d %m %Y"
 
-time = %H:%M
-time-alt = %H:%M
+time =  %H:%M
+time-alt =  %H:%M
 
-label = %date% %time%
+label = "%time% %date%"
 
 [module/battery]
 time-format = %H:%M
@@ -206,8 +169,8 @@ format-charging = <label-charging>
 format-discharging = <label-discharging>
 format-full = <label-full>
 
-label-charging = %consumption% W %time% %percentage%%
-label-discharging = %consumption% W %time% %percentage%%
+label-charging =  %percentage%% %time% %consumption% W
+label-discharging =  %percentage%% %time% %consumption% W
 
 [module/powermenu]
 type = custom/menu
