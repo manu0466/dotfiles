@@ -8,7 +8,7 @@ safe_mkdir $HOME/.i3
 echo "Coping files..."
 cp -a $DIR/. $HOME/.i3/
 
-DEPENDENCIES=('network-manager-applet' 'nitrogen')
+DEPENDENCIES=('network-manager-applet' 'nitrogen' 'pavucontrol')
 AUR_DEPENDENCIES=('python-pywal' 'volctl' 'twmn-git')
 install_dependencies ${DEPENDENCIES[@]} ${AUR_DEPENDENCIES[@]}
 
