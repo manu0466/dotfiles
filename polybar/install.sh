@@ -6,7 +6,9 @@ source $DIR/../utils.sh
 echo "Setting up directory..."
 safe_mkdir $HOME/.config/polybar
 echo "Coping files..."
-cp -r $DIR $HOME/.config/polybar
+cp  $DIR/launch.sh $HOME/.config/polybar
+cp  $DIR/config $HOME/.config/polybar
+
 
 DEPENDENCIES=('noto-fonts' 'ttf-roboto' 'ttf-font-awesome' 'zvbi')
 AUR_DEPENDENCIES=('ttf-unifont' 'ttf-material-icons' 'polybar')

@@ -10,7 +10,7 @@ alert = ${xrdb:color3:#222}
 [bar/top]
 monitor = ${env:MONITOR:}
 width = 100%
-height = 45
+height = 2%
 fixed-center = true
 underline-size = 2
 topbar.border-top-size = 4
@@ -26,11 +26,11 @@ font-0 = "Noto Sans:size=10;3"
 font-1 = unifont:fontformat=truetype:size=10:antialias=false;3
 font-2 = Roboto:style=Regular:size=10;3
 font-3 = "FontAwesome:style=Regular:size=12;5"
-font-4 = "Material Icons:style=Regular:size=12;7"
+font-4 = "Material Icons:style=Regular:size=15;5"
 
 
 modules-left = i3 xwindow
-modules-center = mpd
+modules-center = 
 modules-right = volume cpu memory eth wifi battery date powermenu
 
 tray-position = right
@@ -120,11 +120,11 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp0s20f0u1u4
+interface = enp6s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = ""
 format-connected-prefix-foreground = ${colors.secondary}
 label-connected = %downspeed:9% %local_ip%
 
@@ -145,10 +145,10 @@ interval = 1
 format-prefix-foreground = ${colors.secondary}
 
 date =
-date-alt = "  %d %m %Y"
+date-alt = " %%{F#299DC4}%%{F-} %d %B %Y"
 
-time =  %H:%M
-time-alt =  %H:%M
+time = %%{F#299DC4}%{F-} %H:%M
+time-alt = %%{F#299DC4}%{F-} %H:%M
 
 label = "%time% %date%"
 
@@ -179,27 +179,27 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = 
 label-open-foreground = ${colors.secondary}
-label-close =  cancel
+label-close =  Cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.secondary}
 
-menu-0-0 =  reboot
+menu-0-0 =  Reboot
 menu-0-0-exec = menu-open-1
-menu-0-1 =  power off
+menu-0-1 =  Power off
 menu-0-1-exec = menu-open-2
 
-menu-1-0 = cancel
+menu-1-0 =  Cancel
 menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1 =  Reboot
+menu-1-1-exec = reboot
 
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+menu-2-0 =  Cancel
+menu-2-0-exec = menu-open-0
+menu-2-1 =  Power off
+menu-2-1-exec = poweroff
 
 
 [settings]
