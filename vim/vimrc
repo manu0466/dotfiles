@@ -1,10 +1,15 @@
+" Vim configurations
+" Show line numbers
+set nu
+
 " Plugins management
 call plug#begin('~/.vim/plugged')
 
 Plug 'kaicataldo/material.vim'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
+Plug 'https://github.com/kien/ctrlp.vim.git'
 
 call plug#end()
 
@@ -22,10 +27,6 @@ let g:material_theme_style = 'dark'
 set background=dark
 colorscheme material
 set laststatus=2
-
-" NERDTree configurations
-" Toggle with Ctrl+O
-map <C-o> :NERDTreeToggle<CR>
 
 " Mutli cursor
 let g:multi_cursor_use_default_mapping=0
