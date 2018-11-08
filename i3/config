@@ -187,3 +187,7 @@ exec --no-startup-id volctl
 
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Notifications
+exec --no-startup-id dunst
+
