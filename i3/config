@@ -27,7 +27,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu
-bindsym $mod+d exec dmenu_run -fn 'Noto Sans:pixelsize=15'
+bindsym $mod+d exec dmenu_run -nb '#0c2f35' -sf '#ffffff' -sb '#34AACB' -nf '#a6d7de'
 
 # change focus
 bindsym $mod+Left focus left
@@ -118,6 +118,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+n exec nautilus
 
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
