@@ -193,3 +193,5 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Notifications
 exec --no-startup-id dunst
 
+# Compoton
+exec --no-startup-id compton
