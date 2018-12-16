@@ -4,8 +4,9 @@ background-alt 	= ${xrdb:color7:#222}
 foreground = ${xrdb:color7:#222}
 foreground-alt = ${xrdb:color7:#222}
 primary = ${xrdb:color1:#222}
-secondary = ${xrdb:color2:#222}
-alert = ${xrdb:color3:#222}
+secondary = ${xrdb:color4:#222}
+alert = ${xrdb:color7:#222}
+icon = ${xrdb:color4:#222}
 
 [bar/top]
 monitor = ${env:MONITOR:}
@@ -21,17 +22,14 @@ padding-right = 2
 module-margin-left = 0
 module-margin-right = 2
 dpi = ${env:DPI:}
-
 font-0 = "Noto Sans:size=10;3"
 font-1 = unifont:fontformat=truetype:size=10:antialias=false;3
 font-2 = Roboto:style=Regular:size=10;3
 font-3 = "FontAwesome:style=Regular:size=12;5"
 font-4 = "Material Icons:style=Regular:size=15;10"
-
 modules-left = i3 xwindow
-modules-center = 
-modules-right = backlight cpu memory eth wifi battery date powermenu
-
+modules-center = date
+modules-right = backlight cpu memory eth wifi battery powermenu
 tray-position = right
 tray-background = ${colors.background}
 tray-padding = 0
@@ -44,14 +42,12 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
-
-
 label-mode-padding = 1
 label-mode-foreground = ${colors.foreground}
 label-mode-background = ${colors.background}
 
 label-focused = %name%
-label-focused-background = ${colors.primary}
+label-focused-background = ${colors.secondary}
 label-focused-foreground = ${colors.foreground}
 label-focused-underline = ${colors.secondary}
 label-focused-padding = 2
@@ -66,7 +62,7 @@ label-visible-underline = ${colors.background}
 label-visible-padding = 2
 
 label-urgent = %name%
-label-urgent-background = ${colors.secondary}
+label-urgent-background = ${colors.alert}
 label-urgent-foreground = ${colors.foreground}
 label-urgent-padding = 2
 
@@ -77,82 +73,58 @@ label = %title:0:40:...%
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "  "
-format-prefix-foreground = ${colors.secondary}
+format-prefix =  
+format-prefix-foreground = ${colors.icon}
 ;format-underline = #fff
 label = %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.secondary}
+format-prefix =  
+format-prefix-foreground = ${colors.icon}
 label = %gb_used%/%gb_free%
 
 [module/backlight]
 type = internal/xbacklight
-
-; XRandR output to get get values from
-; Default: the monitor defined for the running bar
 output = ${env:MONITOR:}
-
-; Create scroll handlers used to set the backlight value
-; Default: true
 enable-scroll = false
-
-; Available tags:
-;   <label> (default)
-;   <ramp>
-;   <bar>
 format = <label>
-
-; Available tokens:
-;   %percentage% (default)
-label = %{F#299DC4}%{F-}%percentage%%
+label = %{F#299DC4}%{F-} %percentage%%
 
 [module/eth]
 type = internal/network
-interface = enp6s0
+interface = enp0s20f0u2u4
 interval = 3.0
-
 format-connected-underline = #55aa55
 format-connected-prefix = ""
-format-connected-prefix-foreground = ${colors.secondary}
+format-connected-prefix-foreground = ${colors.icon}
 label-connected = %downspeed:9% %local_ip%
 
 [module/wifi]
 type = internal/network
 interface = wlp2s0
 interval = 3.0
-
 format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.secondary}
+format-connected-prefix =  
+format-connected-prefix-foreground = ${colors.icon}
 label-connected = %essid% %downspeed:9% %local_ip%
 
 [module/date]
 type = internal/date
 interval = 1
-
 format-prefix-foreground = ${colors.secondary}
-
-date =
-date-alt = " %%{F#299DC4}%%{F-} %d %B %Y"
-
-time = %%{F#299DC4}%{F-} %H:%M
-time-alt = %%{F#299DC4}%{F-} %H:%M
-
-label = "%time% %date%"
+date = %a %d %b %Y
+time = %H:%M
+label = "%date% %time%"
 
 [module/battery]
 time-format = %H:%M
 type = internal/battery
 battery = BAT0
 adapter = ADP1
-
 bar-capacity-foreground = #FFF
 bar-capacity-width = 10
-
 bar-capacity-empty = 
 bar-capacity-fill = 
 bar-capacity-indicator = BAT
@@ -161,38 +133,26 @@ format-charging = <label-charging>
 format-discharging = <label-discharging>
 format-full = <label-full>
 
-label-charging =  %percentage%% %time% %consumption% W
-label-discharging =  %percentage%% %time% %consumption% W
+label-charging = %{F#299DC4} %{F-}%percentage%% %time% %consumption% W
+label-discharging = %{F#299DC4} %{F-}%percentage%% %time% %consumption% W
 
 [module/powermenu]
 type = custom/menu
-
 expand-right = true
-
 format-spacing = 1
-
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${colors.icon}
 label-close =  Cancel
-label-close-foreground = ${colors.secondary}
+label-close-foreground = ${colors.icon}
 label-separator = |
 label-separator-foreground = ${colors.secondary}
 
 menu-0-0 =  Reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 =  Power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 =  Cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 =  Reboot
-menu-1-1-exec = reboot
-
-menu-2-0 =  Cancel
-menu-2-0-exec = menu-open-0
-menu-2-1 =  Power off
-menu-2-1-exec = poweroff
-
+menu-0-0-exec = reboot
+menu-0-1 =  Suspend
+menu-0-1-exec = systemctl suspend
+menu-0-2 =  Power off
+menu-0-2-exec = poweroff
 
 [settings]
 screenchange-reload = true
