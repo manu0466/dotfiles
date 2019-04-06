@@ -9,7 +9,7 @@ echo "Coping files..."
 cp $DIR/config $HOME/.i3/
 cp $DIR/wallpaper.jpg $HOME/.i3/
 
-DEPENDENCIES=('network-manager-applet' 'nitrogen' 'pavucontrol' 'dunst' 'compton')
+DEPENDENCIES=('network-manager-applet' 'nitrogen' 'pavucontrol' 'dunst' 'compton' 'playerctl')
 AUR_DEPENDENCIES=('python-pywal' 'volctl' 'twmn-git')
 install_dependencies ${DEPENDENCIES[@]} ${AUR_DEPENDENCIES[@]}
 
