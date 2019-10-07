@@ -140,3 +140,6 @@
 #    urgency = normal
 #
 # vim: ft=cfg
+[spotify]
+    appname = *Spotify*
+    new_icon = spotify-client
