@@ -16,8 +16,17 @@ else
 fi
 
 if type "xrandr"; then
+  #primary=$(xrandr --query | grep "primary" | cut -d" " -f1)
+  primary="DP-1"
+  #primary="eDP-1"
   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    DPI=$s_dpi MONITOR=$m polybar --reload top &
+    bar="none"
+    if [ "$m" == "$primary" ]; then
+      bar="main"
+    else
+      bar="secondary"
+    fi
+    HOME=$HOME DPI=$s_dpi MONITOR=$m polybar --reload $bar -c $HOME/.config/polybar/bars.conf &
   done
 else
   polybar --reload example &
