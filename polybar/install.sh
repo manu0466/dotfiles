@@ -11,7 +11,7 @@ cp  $DIR/config $HOME/.config/polybar
 
 
 DEPENDENCIES=('noto-fonts' 'ttf-roboto' 'ttf-font-awesome' 'zvbi')
-AUR_DEPENDENCIES=('ttf-unifont' 'ttf-material-icons' 'polybar')
+AUR_DEPENDENCIES=('ttf-unifont' 'nerd-fonts-jetbrains-mono' 'polybar')
 install_dependencies ${DEPENDENCIES[@]} ${AUR_DEPENDENCIES[@]}
 
 # ip link show | grep BROADCAST | cut -d":" -f2 | tr -d ' '

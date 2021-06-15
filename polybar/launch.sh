@@ -16,8 +16,8 @@ else
 fi
 
 if type "xrandr"; then
-  #primary=$(xrandr --query | grep "primary" | cut -d" " -f1)
-  primary="DP-1"
+  primary=$(xrandr --query | grep "primary" | cut -d" " -f1)
+  #primary="DP-1"
   #primary="eDP-1"
   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
     bar="none"

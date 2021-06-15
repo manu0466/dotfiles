@@ -20,6 +20,13 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Auto floating for certain windows, fint window attributes with `xprop`
+for_window [class="Slack"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [title="Arch update"] floating enable
+# Spotify to scratchpad
+for_window [class="Spotify"] move scratchpad 
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -27,7 +34,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu
-bindsym $mod+d exec dmenu_run -nb '#0c2f35' -sf '#ffffff' -sb '#34AACB' -nf '#a6d7de'
+bindsym $mod+d exec rofi -show run
 
 # change focus
 bindsym $mod+Left focus left
@@ -97,14 +104,16 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# Screenshots
+bindsym Print exec scrot ~/Pictures/Screenshots/Screen-%Y%m%d-%H%M%S.png 
+bindsym --release Shift+Print exec scrot -s ~/Pictures/Screenshots/Screen-%Y%m%d-%H%M%S.png
+
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioPlayPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
@@ -120,7 +129,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec ~/.i3/exit.sh
 
-bindsym $mod+n exec nautilus
+bindsym $mod+n exec rofi -show file-browser -file-browser-depth 2 -file-browser-dir $HOME -file-browser-sort-by-depth
+bindsym $mod+m workspace 9; exec /usr/bin/spotify
 
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
@@ -158,13 +168,18 @@ mode "move workspace" {
 bindsym $mod+l mode "launcher"
 
 mode "launcher" {
-        bindsym b exec --no-startup-id google-chrome-stable; mode "default"
+        bindsym b exec --no-startup-id brave; mode "default"
+	bindsym s exec --no-startup-id spotify; mode "default"	
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
 bindsym $mod+w mode "move workspace"
+
+# Scratchpad configurations
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 # Italian keyboard layout
 exec --no-startup-id setxkbmap it
@@ -195,4 +210,4 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id dunst
 
 # Compoton
-exec --no-startup-id compton
+exec --no-startup-id picom
