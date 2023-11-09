@@ -183,7 +183,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Launch project selection
-bindsym $mod+p exec --no-startup-id $HOME/.config/i3/nvim-projects.sh
+bindsym $mod+p exec --no-startup-id $HOME/.config/i3/scripts/nvim-projects.sh
 
 # Windows borders twicks
 new_window pixel 2
