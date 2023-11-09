@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+WORKSPACES=("$HOME/Documenti/forbole"  "$HOME/Documenti/Progetti")
+
+function listDirectories() {
+  for dir in "${WORKSPACES[@]}"; do
+    ls -1 "$dir"
+  done
+  echo "quit"
+}
+
+function runNeoVim() {
+  for dir in "${WORKSPACES[@]}"; do
+    path="$dir/$1"
+    if [ -d "$path" ]; then
+      cmd="alacritty --title $1 --working-directory=$path -e tmux new -s $1 nvim ."
+      $cmd &>/dev/null & disown;
+      break
+    fi
+  done
+}
+
+if [ -z "$1" ] ; then
+  listDirectories
+elif [ x"$@" = x"quit" ] ; then
+  exit 1
+else
+  runNeoVim "$1"
+  exit 0
+fi

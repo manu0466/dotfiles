@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+function listDevices() {
+    # List the current available emulators
+    avds=( $(emulator -list-avds) )
+    for avd in "${avds[@]}"
+	do
+   	:
+   		echo "$avd"
+        echo "$avd -no-snapshot-load"
+	done
+    echo "quit"
+}
+
+
+function runEmulator() {
+    cmd="emulator @$1"
+    $cmd &>/dev/null & disown;
+}
+
+if [ -z "$1" ] ; then
+    listDevices
+elif [ x"$@" = x"quit" ] ; then
+    exit 0
+else
+    runEmulator "$1"
+    exit 0
+fi
