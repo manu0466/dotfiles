@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WORKSPACES=("$HOME/Documenti/forbole"  "$HOME/Documenti/Progetti")
+WORKSPACES=("$HOME/Documenti/forbole"  "$HOME/Documenti/Progetti" "$HOME/Documents/forbole" "$HOME/Documents/projects")
 
 function listDirectories() {
   for dir in "${WORKSPACES[@]}"; do
