@@ -1,5 +1,5 @@
 configuration {
-    modi: "window,drun,run,ssh,combi";
+    modi: "window,drun,run,ssh,combi,Projects:~/.config/rofi/scripts/workspaces,Emulators:~/.config/rofi/scripts/android-emulators";
     font: "JetBrainsMono NF 16";
     show-icons: true;
 }
