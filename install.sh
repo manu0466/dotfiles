@@ -17,3 +17,4 @@ install picom
 install polybar
 install rofi
 install tmux
+install wired
