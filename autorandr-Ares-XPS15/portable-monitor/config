@@ -19,9 +19,11 @@ x-prop-non_desktop 0
 x-prop-scaling_mode Full aspect
 output DP1
 crtc 1
+filter bilinear
 mode 1920x1080
 pos 2560x0
 rate 100.00
+transform 1.500000,0.000000,0.000000,0.000000,1.500000,0.000000,0.000000,0.000000,1.000000
 x-prop-audio auto
 x-prop-broadcast_rgb Automatic
 x-prop-colorspace Default
