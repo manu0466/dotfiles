@@ -221,3 +221,6 @@ exec --no-startup-id /usr/lib/pam_kwallet_init
 # KDE Connect
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id /usr/bin/kdeconnect-indicator
+
+# Autorandr
+exec_always --no-startup-id $HOME/.config/i3/scripts/display-setup.sh
