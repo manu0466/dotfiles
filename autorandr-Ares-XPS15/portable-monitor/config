@@ -6,22 +6,11 @@ output HDMI2
 off
 output VIRTUAL1
 off
-output eDP1
-crtc 0
-mode 2560x1440
-pos 0x0
-primary
-rate 59.96
-x-prop-broadcast_rgb Automatic
-x-prop-colorspace Default
-x-prop-max_bpc 12
-x-prop-non_desktop 0
-x-prop-scaling_mode Full aspect
 output DP1
 crtc 1
 filter bilinear
 mode 1920x1080
-pos 2560x0
+pos 0x0
 rate 100.00
 transform 1.500000,0.000000,0.000000,0.000000,1.500000,0.000000,0.000000,0.000000,1.000000
 x-prop-audio auto
@@ -29,3 +18,14 @@ x-prop-broadcast_rgb Automatic
 x-prop-colorspace Default
 x-prop-max_bpc 12
 x-prop-non_desktop 0
+output eDP1
+crtc 0
+mode 2560x1440
+pos 2880x0
+primary
+rate 59.96
+x-prop-broadcast_rgb Automatic
+x-prop-colorspace Default
+x-prop-max_bpc 12
+x-prop-non_desktop 0
+x-prop-scaling_mode Full aspect
