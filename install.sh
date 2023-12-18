@@ -31,3 +31,4 @@ install polybar
 install rofi
 install tmux
 install wired
+install autorandr
