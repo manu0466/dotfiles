@@ -210,7 +210,7 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id sleep 2 && volctl
 
 # Notifications
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
+exec --no-startup-id /usr/bin/wired
 
 # Compoton
 exec --no-startup-id picom
