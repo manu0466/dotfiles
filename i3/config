@@ -171,8 +171,8 @@ bindsym $mod+l mode "launcher"
 mode "launcher" {
         bindsym b exec --no-startup-id brave; mode "default"
 	    bindsym s exec --no-startup-id spotify; mode "default"	
-        bindsym p exec --no-startup-id rofi -show Projects
-        bindsym e exec --no-startup-id rofi -show Emulators
+        bindsym p exec --no-startup-id rofi -show Projects; mode "default"
+        bindsym e exec --no-startup-id rofi -show Emulators; mode "default"
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
