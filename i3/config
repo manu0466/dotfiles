@@ -25,8 +25,6 @@ for_window [class="Slack"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [title="Arch update"] floating enable
 for_window [title="Android Emulator -"] floating enable
-# Spotify to scratchpad
-for_window [class="Spotify"] move scratchpad 
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -131,7 +129,6 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec ~/.i3/exit.sh
 
 bindsym $mod+n exec rofi -show file-browser -file-browser-depth 2 -file-browser-dir $HOME -file-browser-sort-by-depth
-bindsym $mod+m workspace 9; exec /usr/bin/spotify
 
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
@@ -170,7 +167,6 @@ bindsym $mod+l mode "launcher"
 
 mode "launcher" {
         bindsym b exec --no-startup-id brave; mode "default"
-	    bindsym s exec --no-startup-id spotify; mode "default"	
         bindsym p exec --no-startup-id rofi -show Projects; mode "default"
         bindsym e exec --no-startup-id rofi -show Emulators; mode "default"
 
