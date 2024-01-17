@@ -103,6 +103,9 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# wired Notifications
+bindsym $mod+Shift+n exec wired -d all
+
 # Screenshots
 bindsym Print exec scrot ~/Pictures/Screenshots/Screen-%Y%m%d-%H%M%S.png 
 bindsym --release Shift+Print exec scrot -s ~/Pictures/Screenshots/Screen-%Y%m%d-%H%M%S.png
