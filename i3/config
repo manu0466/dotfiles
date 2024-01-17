@@ -131,8 +131,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec ~/.i3/exit.sh
 
-bindsym $mod+n exec rofi -show file-browser -file-browser-depth 2 -file-browser-dir $HOME -file-browser-sort-by-depth
-
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
