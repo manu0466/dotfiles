@@ -14,10 +14,5 @@ style = "Italic"
 family = "JetBrainsMono NF"
 style = "Regular"
 
-[[keyboard.bindings]]
-action = "SpawnNewInstance"
-key = "N"
-mods = "Control"
-
 [window]
 opacity = 1
