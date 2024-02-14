@@ -2,18 +2,39 @@
 
 WORKSPACES=("$HOME/Documenti/forbole"  "$HOME/Documenti/Progetti" "$HOME/Documents/forbole" "$HOME/Documents/projects")
 
+active_icon="🟢"
+inactive_icon="⚫"
+
 function listDirectories() {
+  local dirs=()
   for dir in "${WORKSPACES[@]}"; do
-    ls -1 "$dir"
+    dirs+=($(ls -1 "$dir"))
+  done
+  for dir in "${dirs[@]}"; do
+    # Check if there is already a tmux session with the same name
+    if tmux has-session -t "$dir" 2>/dev/null; then
+      printf "$active_icon "
+    else
+      printf "$inactive_icon "
+    fi
+    echo "$dir"
   done
   echo "quit"
 }
 
 function runNeoVim() {
+  local project=$1
+  local is_active=$2
   for dir in "${WORKSPACES[@]}"; do
-    path="$dir/$1"
+    local path="$dir/$project"
     if [ -d "$path" ]; then
-      cmd="alacritty --title $1 --working-directory=$path -e tmux new -s $1 nvim ."
+      # Check if there is already a tmux session with the same name
+      if [ "$is_active" == "$active_icon" ]; then
+        cmd="alacritty --title $1 --working-directory=$path -e tmux attach -t $1"
+      else
+        cmd="alacritty --title $1 --working-directory=$path -e tmux new -s $1 nvim ."
+      fi
+
       $cmd &>/dev/null & disown;
       break
     fi
@@ -25,6 +46,7 @@ if [ -z "$1" ] ; then
 elif [ x"$@" = x"quit" ] ; then
   exit 1
 else
-  runNeoVim "$1"
+  IFS=' ' read -r -a arguments <<< "$1"
+  runNeoVim "${arguments[1]}" "${arguments[0]}"
   exit 0
 fi
