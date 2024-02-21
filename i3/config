@@ -202,7 +202,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 
 # volume applet
-exec --no-startup-id sleep 2 && volctl
+exec --no-startup-id sleep 5 && volctl
 
 # Notifications
 exec --no-startup-id /usr/bin/wired
