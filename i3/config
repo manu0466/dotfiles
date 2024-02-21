@@ -21,7 +21,6 @@ font pango:JetBrainsMono NF 8
 floating_modifier $mod
 
 # Auto floating for certain windows, fint window attributes with `xprop`
-for_window [class="Slack"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [title="Arch update"] floating enable
 for_window [title="Android Emulator -"] floating enable
