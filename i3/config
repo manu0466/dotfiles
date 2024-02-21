@@ -107,8 +107,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+n exec wired -d all
 
 # Screenshots
-bindsym Print exec scrot ~/Pictures/Screenshots/Screen-%Y%m%d-%H%M%S.png 
-bindsym --release Shift+Print exec scrot -s ~/Pictures/Screenshots/Screen-%Y%m%d-%H%M%S.png
+bindsym $mod+Print exec flameshot gui
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
