@@ -24,13 +24,17 @@ install() {
     fi
 }
 
-install alacritty
-install i3
-install picom
-install polybar
-install rofi
-install tmux
-install wired
-install autorandr
-install fontconfig
-install lazygit
+if [ $# -eq 0 ]; then
+    install alacritty
+    install i3
+    install picom
+    install polybar
+    install rofi
+    install tmux
+    install wired
+    install autorandr
+    install fontconfig
+    install lazygit
+else
+    install $1
+fi
