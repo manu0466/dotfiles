@@ -33,4 +33,4 @@ install tmux
 install wired
 install autorandr
 install fontconfig
-
+install lazygit

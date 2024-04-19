@@ -1,0 +1,7 @@
+customCommands:
+  - key: '<c-f>'
+    context: 'localBranches'
+    command: 'git remote prune origin'
+    description: 'Prune remote tracking branches'
+    loadingText: 'Pruning remote tracking branches...'
+    showOutput: true
