@@ -17,7 +17,7 @@ function listDirectories() {
 			# Create the work space with project name
 			local workspace_with_project="${workspace_name}${WORKSPACE_PROJECT_SEPARATOR}${project_name}"
 			# Check if there is already a tmux session with the same name
-			if tmux has-session -t "$workspace_with_project" 2>/dev/null; then
+			if tmux has-session -t="$workspace_with_project" 2>/dev/null; then
 				printf "$ACTIVE_ICON "
 			else
 				printf "$INACTIVE_ICON "
@@ -39,7 +39,7 @@ function runNeoVim() {
 	if [ -d "$path" ]; then
 		# Check if there is already a tmux session with the same name
 		if [ $is_active == "true" ]; then
-			cmd="alacritty --title ${project_name} --working-directory=$path -e tmux attach -t ${project_name}"
+			cmd="alacritty --title ${project_name} --working-directory=$path -e tmux attach -t=${project_name}"
 		else
 			cmd="alacritty --title ${project_name} --working-directory=$path -e tmux new -s ${project_name} nvim ."
 		fi
