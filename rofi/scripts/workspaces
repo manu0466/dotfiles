@@ -6,26 +6,28 @@ WORKSPACE_PROJECT_SEPARATOR="/"
 ACTIVE_ICON="🟢"
 INACTIVE_ICON="⚫"
 
-function listDirectories() {
+# Both alacritty and kitty are supported
+# TERMINAL="alacritty"
+TERMINAL="kitty"
 
+function listDirectories() {
 	# Use find to locate all project directories within workspaces
-	find $WORKSPACES_DIR -maxdepth 1 -mindepth 1 -type d | while read -r workspace; do
+	find "$WORKSPACES_DIR" -maxdepth 1 -mindepth 1 -type d | while read -r workspace; do
 		local workspace_name=$(basename "$workspace")
-		find $workspace -maxdepth 1 -mindepth 1 -type d | while read -r project; do
+		find "$workspace" -maxdepth 1 -mindepth 1 -type d | while read -r project; do
 			# Extract the project name
 			local project_name=$(basename "$project")
 			# Create the work space with project name
 			local workspace_with_project="${workspace_name}${WORKSPACE_PROJECT_SEPARATOR}${project_name}"
 			# Check if there is already a tmux session with the same name
 			if tmux has-session -t="$workspace_with_project" 2>/dev/null; then
-				printf "$ACTIVE_ICON "
+				printf '%s' "$ACTIVE_ICON "
 			else
-				printf "$INACTIVE_ICON "
+				printf '%s' "$INACTIVE_ICON "
 			fi
 			echo "$workspace_with_project"
 		done
 	done
-	echo "$dir"
 }
 
 function runNeoVim() {
@@ -38,10 +40,10 @@ function runNeoVim() {
 
 	if [ -d "$path" ]; then
 		# Check if there is already a tmux session with the same name
-		if [ $is_active == "true" ]; then
-			cmd="alacritty --title ${project_name} --working-directory=$path -e tmux attach -t=${project_name}"
+		if [ "$is_active" == "true" ]; then
+			cmd="$TERMINAL --title ${project_name} --working-directory=$path -e tmux attach -t=${project_name}"
 		else
-			cmd="alacritty --title ${project_name} --working-directory=$path -e tmux new -s ${project_name} nvim ."
+			cmd="$TERMINAL --title ${project_name} --working-directory=$path -e tmux new -s ${project_name} nvim ."
 		fi
 
 		$cmd &>/dev/null &
@@ -58,8 +60,8 @@ else
 	active_icon="${arguments[0]}"
 	workspace_with_project="${arguments[1]}"
 	# Extract the work space and project name
-	workspace="${workspace_with_project%${WORKSPACE_PROJECT_SEPARATOR}*}"
-	project="${workspace_with_project#*${WORKSPACE_PROJECT_SEPARATOR}}"
+	workspace="${workspace_with_project%"${WORKSPACE_PROJECT_SEPARATOR}"*}"
+	project="${workspace_with_project#*"${WORKSPACE_PROJECT_SEPARATOR}"}"
 	# Check if there is already a tmux session
 	# for the project.
 	is_active=false

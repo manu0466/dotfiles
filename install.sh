@@ -25,7 +25,7 @@ install() {
 }
 
 if [ $# -eq 0 ]; then
-    install alacritty
+    install kitty
     install i3
     install picom
     install polybar
