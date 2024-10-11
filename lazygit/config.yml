@@ -1,5 +1,5 @@
 customCommands:
-  - key: '<c-p>'
+  - key: '<c-f>'
     context: 'localBranches'
     command: 'git remote prune origin'
     description: 'Prune remote tracking branches'
