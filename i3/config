@@ -127,7 +127,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec ~/.i3/exit.sh
+bindsym $mod+Escape exec i3lock -i ~/.config/i3/wallpaper.png
 
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
@@ -154,6 +154,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+bindsym $mod+w mode "move workspace"
 mode "move workspace" {
         bindsym Left move workspace to output left
         bindsym Right move workspace to output right
@@ -163,7 +164,6 @@ mode "move workspace" {
 }
 
 bindsym $mod+l mode "launcher"
-
 mode "launcher" {
         bindsym b exec --no-startup-id brave; mode "default"
         bindsym p exec --no-startup-id rofi -show Projects; mode "default"
@@ -172,8 +172,6 @@ mode "launcher" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-bindsym $mod+w mode "move workspace"
 
 # Scratchpad configurations
 bindsym $mod+Shift+minus move scratchpad

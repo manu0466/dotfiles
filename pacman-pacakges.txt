@@ -28,6 +28,7 @@ gvfs
 gvfs-smb
 htop
 i3-wm
+i3lock
 intel-ucode
 jdk11-openjdk
 jetbrains-toolbox
