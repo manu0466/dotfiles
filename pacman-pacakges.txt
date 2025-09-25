@@ -67,6 +67,7 @@ qpwgraph
 ripgrep
 rofi
 rtkit
+solaar
 spotify-launcher
 sshfs
 sudo
