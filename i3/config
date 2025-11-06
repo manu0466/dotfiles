@@ -163,16 +163,6 @@ mode "move workspace" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+l mode "launcher"
-mode "launcher" {
-        bindsym b exec --no-startup-id brave; mode "default"
-        bindsym p exec --no-startup-id rofi -show Projects; mode "default"
-        bindsym e exec --no-startup-id rofi -show Emulators; mode "default"
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
 # Scratchpad configurations
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
