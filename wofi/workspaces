@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+script="$SCRIPT_DIR/scripts/workspaces"
+
+selected=$($script | wofi --dmenu)
+
+if [ -z "$selected" ]; then
+	exit 1
+fi
+
+$script $selected

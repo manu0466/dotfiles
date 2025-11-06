@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+WORKSPACES_DIR="$HOME/workspaces"
+WORKSPACE_PROJECT_SEPARATOR="/"
+
+ACTIVE_ICON="🟢"
+INACTIVE_ICON="⚫"
+
+# Both alacritty and kitty are supported
+# TERMINAL="alacritty"
+TERMINAL="kitty"
+
+function listDirectories() {
+	# Use find to locate all project directories within workspaces
+	find "$WORKSPACES_DIR" -maxdepth 1 -mindepth 1 -type d | while read -r workspace; do
+		local workspace_name=$(basename "$workspace")
+		find "$workspace" -maxdepth 1 -mindepth 1 -type d | while read -r project; do
+			# Extract the project name
+			local project_name=$(basename "$project")
+			# Create the work space with project name
+			local workspace_with_project="${workspace_name}${WORKSPACE_PROJECT_SEPARATOR}${project_name}"
+			# Check if there is already a tmux session with the same name
+			if tmux has-session -t="$workspace_with_project" 2>/dev/null; then
+				printf '%s' "$ACTIVE_ICON "
+			else
+				printf '%s' "$INACTIVE_ICON "
+			fi
+			echo "$workspace_with_project"
+		done
+	done
+}
+
+function runNeoVim() {
+	local workspace=$1
+	local project=$2
+	local is_active=$3
+
+	local project_name="${workspace}${WORKSPACE_PROJECT_SEPARATOR}${project}"
+	local path="${WORKSPACES_DIR}/${workspace}/${project}"
+
+	if [ -d "$path" ]; then
+		# Check if there is already a tmux session with the same name
+		if [ "$is_active" == "true" ]; then
+			cmd="$TERMINAL --title ${project_name} --working-directory=$path -e tmux attach -t=${project_name}"
+		else
+			cmd="$TERMINAL --title ${project_name} --working-directory=$path -e tmux new -s ${project_name} nvim ."
+		fi
+
+		$cmd &>/dev/null &
+		disown
+	fi
+}
+
+if [ -z "$1" ]; then
+	listDirectories
+elif [ "$1" = "quit" ]; then
+	exit 1
+else
+	IFS=' ' read -r -a arguments <<<"$@"
+	active_icon="${arguments[0]}"
+	workspace_with_project="${arguments[1]}"
+	# Extract the work space and project name
+	workspace="${workspace_with_project%"${WORKSPACE_PROJECT_SEPARATOR}"*}"
+	project="${workspace_with_project#*"${WORKSPACE_PROJECT_SEPARATOR}"}"
+	# Check if there is already a tmux session
+	# for the project.
+	is_active=false
+	if [ "$active_icon" == "$ACTIVE_ICON" ]; then
+		is_active=true
+	fi
+
+	runNeoVim "${workspace}" "${project}" $is_active
+	exit 0
+fi
