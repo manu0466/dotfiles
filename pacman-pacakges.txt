@@ -66,12 +66,12 @@ python-pipx
 qflipper-bin
 qpwgraph
 ripgrep
-rofi
 rtkit
 solaar
 spotify-launcher
 sshfs
 sudo
+swaync
 texinfo
 thunar
 thunar-archive-plugin
