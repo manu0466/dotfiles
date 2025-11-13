@@ -50,6 +50,7 @@ networkmanager
 nitrogen
 noto-fonts-emoji
 nvm
+otf-font-awesome
 pacman-contrib
 paru
 pavucontrol
@@ -78,6 +79,7 @@ thunar-archive-plugin
 tmux
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
+ttf-nerd-fonts-symbols
 ttf-nerd-fonts-symbols-mono
 volctl
 wired
