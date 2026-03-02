@@ -1,4 +1,3 @@
-alacritty
 android-emulator-dummy
 android-sdk-build-tools-dummy
 android-sdk-cmdline-tools-latest
@@ -20,6 +19,7 @@ docker-compose
 file-roller
 flameshot
 fwupd
+ghostty
 git
 gnome-system-monitor
 go

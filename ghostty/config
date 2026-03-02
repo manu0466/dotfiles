@@ -1,0 +1,11 @@
+# Visual configurations
+theme = "Kitty Default"
+background-opacity = 1
+font-family = "JetBrainsMono Nerd Font"
+font-size = 9
+window-decoration = "none"
+
+# Behavior configurations
+working-directory = "home"
+window-inherit-working-directory = false
+copy-on-select = true
