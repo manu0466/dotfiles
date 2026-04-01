@@ -9,3 +9,4 @@ window-decoration = "none"
 working-directory = "home"
 window-inherit-working-directory = false
 copy-on-select = true
+shell-integration-features = ssh-env
