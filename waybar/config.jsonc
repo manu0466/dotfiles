@@ -13,7 +13,6 @@
         "clock",
     ],
     "modules-right": [
-        "mpd",
         "pulseaudio",
         "network",
         "cpu",
@@ -25,32 +24,6 @@
         "tray",
         "custom/power"
     ],
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
-    },
     "tray": {
         "icon-size": 21,
         "spacing": 10,
@@ -64,11 +37,12 @@
         "format": "{:%a %d %H:%M}"
     },
     "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
+        "format": "{usage}% 󰻠",
+        "on-click": "gnome-system-monitor"
     },
     "memory": {
-        "format": "{}% "
+        "format": "{used:0.1f}G/{total:0.1f}G ",
+        "on-click": "gnome-system-monitor"
     },
     "temperature": {
         "thermal-zone": 7,
@@ -91,7 +65,7 @@
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% 󰂄",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
@@ -101,24 +75,24 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+        "tooltip-format": "{ifname} via {gwaddr} 󰖂",
+        "format-linked": "{ifname} (No IP) ⚠",
+        "format-disconnected": "Disconnected 󰈂",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format": "{volume}% {format_source}",
+        "format-bluetooth": " {volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " 󰝟 {icon} {format_source}",
+        "format-muted": "󰝟 {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "󰋎",
             "phone": "",
             "portable": "",
             "car": "",
@@ -127,7 +101,7 @@
         "on-click": "pavucontrol"
     },
     "custom/power": {
-        "format" : "<span size='8pt'>⏻ </span>",
+        "format" : "<span size='14pt'>⏻ </span>",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
@@ -140,7 +114,7 @@
     },
     "custom/notification": {
         "tooltip": true,
-        "format": "<span size='10pt'>{icon}</span>",
+        "format": "{icon}",
         "format-icons": {
           "notification": "󱅫 ",
           "none": "󰂜",
